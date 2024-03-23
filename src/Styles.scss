@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+$Linear-gradient: hsl(249, 99%, 64%) to hsl(278, 94%, 30%);
+$Red: hsl(0, 100%, 66%);
+
+$White: hsl(0, 0%, 100%);
+$Light-grayish-violet: hsl(270, 3%, 87%);
+$Dark-grayish-violet: hsl(279, 6%, 55%);
+$Very-dark-violet: hsl(278, 68%, 11%);
+
+.space-grotesk {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+main {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+
+  .container {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+
+    .left-side {
+      width: 30%;
+      height: 100vh;
+      background-image: url("src/assets/bg-main-desktop.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      position: relative;
+
+      .purple-side {
+        height: 245px;
+        width: 447px;
+        background-image: url("src/assets/bg-card-front.png");
+        position: absolute;
+        top: 25%;
+        right: -100px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        justify-content: end;
+
+        .logo-container {
+          background-image: url("src/assets/card-logo.svg");
+          height: 20%;
+          width: 20%;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+          position: absolute;
+          top: 20px;
+          left: 20px;
+        }
+
+        .big-p {
+          color: white;
+          font-size: 2.2rem;
+          width: 100%;
+        }
+
+        .on-card-bottom {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .small-p {
+            color: white;
+          }
+        }
+      }
+
+      .gray-side {
+        height: 245px;
+        width: 447px;
+        background-image: url("src/assets/bg-card-back.png");
+        position: absolute;
+        top: 55%;
+        right: -200px;
+
+        .small-p {
+          color: white;
+          position: absolute;
+          top: 45%;
+          right: 12%;
+        }
+      }
+    }
+
+    .right-side {
+      width: 70%;
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      margin-left: 350px;
+
+      .inputs {
+        display: flex;
+        flex-direction: column;
+        max-width: 447px;
+
+        label {
+          font-size: 0.95rem;
+          color: $Very-dark-violet;
+          letter-spacing: 2px;
+        }
+
+        .rest {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .date-section {
+            width: 100%;
+            .date-inputs {
+              display: flex;
+              gap: 10px;
+            }
+          }
+        }
+
+        input {
+          all: unset;
+          height: 50px;
+          border: 1px solid $Light-grayish-violet;
+          border-radius: 8px;
+          padding-left: 15px;
+          margin: 10px 0 30px 0;
+
+          &::placeholder {
+            color: $Light-grayish-violet;
+          }
+        }
+
+        .small-input {
+          width: 70px;
+        }
+
+        .confirm-button {
+          all: unset;
+          width: 100%;
+          text-align: center;
+          height: 70px;
+          border-radius: 8px;
+          color: white;
+          background-color: $Very-dark-violet;
+          font-size: 1.9rem;
+
+          &:hover {
+            cursor: pointer;
+            background-color: hsl(249, 99%, 64%);
+          }
+
+          &:active {
+            transform: translateY(1px);
+          }
+        }
+      }
+    }
+  }
+}
