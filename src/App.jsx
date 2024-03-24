@@ -17,9 +17,9 @@ const App = () => {
       .string()
       .required("Can't be blank")
       .length(16, "Card number must have 16 numbers"),
-    mm: yup.number().required("Can't be blank").integer().min(1).max(12),
-    yy: yup.number().required("Can't be blank").integer().min(1).max(12),
-    cvc: yup.number().required("Can't be blank").min(100).max(999),
+    mm: yup.string().required("Can't be blank").max(2),
+    yy: yup.string().required("Can't be blank").max(2),
+    cvc: yup.string().required("Can't be blank").length(3, 'Must have 3 numbers'),
   });
 
   const {
