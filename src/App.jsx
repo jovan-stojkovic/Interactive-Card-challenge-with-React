@@ -55,7 +55,7 @@ const App = () => {
 
         <div className="right-side">
           <form className="inputs" onSubmit={handleSubmit(onSubmit)}>
-            <div className="name-section">
+            <div className="big-section">
               <label htmlFor="name">CARDHOLDER NAME</label>
               <input
                 type="text"
@@ -69,7 +69,7 @@ const App = () => {
               <p className="err">{errors.name?.message}</p>
             </div>
 
-            <div className="card-number-section">
+            <div className="big-section">
               <label htmlFor="number">CARD NUMBER</label>
               <input
                 type="number"
@@ -110,6 +110,7 @@ const App = () => {
                   {errors.mm?.message ? errors.mm.message : errors.yy?.message}
                 </p>
               </div>
+
               <div className="cvc-section">
                 <label htmlFor="cvc">CVC</label>
                 <input
@@ -124,6 +125,7 @@ const App = () => {
                 <p className="err">{errors.cvc?.message}</p>
               </div>
             </div>
+
             <button className="confirm-button" type="submit">
               Confirm
             </button>

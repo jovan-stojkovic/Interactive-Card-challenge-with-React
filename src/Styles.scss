@@ -102,68 +102,24 @@ main {
       width: 70%;
       display: flex;
       align-items: center;
-      justify-content: start;
-      margin-left: 350px;
+      margin-left: 400px;
 
-      .inputs {
+      form {
         display: flex;
         flex-direction: column;
-        max-width: 447px;
+        gap: 30px;
+        max-width: 450px;
 
         label {
           font-size: 0.95rem;
           color: $Very-dark-violet;
           letter-spacing: 2px;
-          margin-bottom: 10px;
         }
 
-        .name-section {
-          display: flex;
-          flex-direction: column;
-          position: relative;
-
-          .err {
-            position: absolute;
-            top: 90px;
-            color: red;
-            font-size: 0.9rem;
-          }
-        }
-
-        .card-number-section {
-          display: flex;
-          flex-direction: column;
-          position: relative;
-
-          .err {
-            position: absolute;
-            top: 90px;
-            color: red;
-            font-size: 0.9rem;
-          }
-        }
-
-        .rest {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-
-          .date-section {
-            width: 100%;
-            position: relative;
-
-            .date-inputs {
-              display: flex;
-              gap: 10px;
-            }
-
-            .err {
-              position: absolute;
-              top: 90px;
-              color: red;
-              font-size: 0.9rem;
-            }
-          }
+        .err {
+          color: red;
+          font-size: 0.8rem;
+          height: 1rem;
         }
 
         input {
@@ -172,7 +128,7 @@ main {
           border: 2px solid $Light-grayish-violet;
           border-radius: 8px;
           padding-left: 15px;
-          margin-bottom: 30px;
+          margin-top: 10px;
           &::-webkit-inner-spin-button {
             appearance: none;
           }
@@ -184,10 +140,6 @@ main {
           &:focus {
             border: 2px solid $Dark-grayish-violet;
           }
-        }
-
-        .small-input {
-          width: 70px;
         }
 
         .confirm-button {
@@ -208,6 +160,40 @@ main {
           &:active {
             background-color: $Very-dark-violet;
             transition: 0.2s ease;
+          }
+        }
+
+        .big-section {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .rest {
+          display: flex;
+          gap: 20px;
+
+          .date-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: top;
+            width: 50%;
+
+            .date-inputs {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 10px;
+
+              .small-input {
+                width: 77px;
+              }
+            }
+          }
+
+          .cvc-section {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
           }
         }
       }
