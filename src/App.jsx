@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import "./Styles.scss";
 
@@ -10,7 +11,24 @@ const App = () => {
   const [onCardYY, setOnCardYY] = useState("00");
   const [onCardCVC, setOnCardCVC] = useState("000");
 
-  const { register, handleSubmit } = useForm();
+  const schema = yup.object().shape({
+    name: yup.string().required("Can't be blank"),
+    number: yup
+      .string()
+      .required("Can't be blank")
+      .length(16, "Card number must have 16 numbers"),
+    mm: yup.number().required("Can't be blank").integer().min(1).max(12),
+    yy: yup.number().required("Can't be blank").integer().min(1).max(12),
+    cvc: yup.number().required("Can't be blank").min(100).max(999),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const onSubmit = (data) => {
     console.log(data);
@@ -37,26 +55,34 @@ const App = () => {
 
         <div className="right-side">
           <form className="inputs" onSubmit={handleSubmit(onSubmit)}>
-            <label htmlFor="name">CARDHOLDER NAME</label>
-            <input
-              type="text"
-              placeholder="e.g. Jane Appleseed"
-              className="big-input"
-              {...register("name")}
-              onChange={(e) => {
-                setOnCardName(e.target.value.toUpperCase());
-              }}
-            />
-            <label htmlFor="number">CARD NUMBER</label>
-            <input
-              type="number"
-              placeholder="e.g. 1234 5678 9123 0000"
-              className="big-input"
-              {...register("number")}
-              onChange={(e) => {
-                setOnCardNumber(e.target.value);
-              }}
-            />
+            <div className="name-section">
+              <label htmlFor="name">CARDHOLDER NAME</label>
+              <input
+                type="text"
+                placeholder="e.g. Jane Appleseed"
+                className="big-input"
+                {...register("name")}
+                onChange={(e) => {
+                  setOnCardName(e.target.value.toUpperCase());
+                }}
+              />
+              <p className="err">{errors.name?.message}</p>
+            </div>
+
+            <div className="card-number-section">
+              <label htmlFor="number">CARD NUMBER</label>
+              <input
+                type="number"
+                placeholder="e.g. 1234 5678 9123 0000"
+                className="big-input"
+                {...register("number")}
+                onChange={(e) => {
+                  setOnCardNumber(e.target.value);
+                }}
+              />
+              <p className="err">{errors.number?.message}</p>
+            </div>
+
             <div className="rest">
               <div className="date-section">
                 <label htmlFor="date">EXP. DATE (MM/YY)</label>
@@ -80,6 +106,9 @@ const App = () => {
                     }}
                   />
                 </div>
+                <p className="err">
+                  {errors.mm?.message ? errors.mm.message : errors.yy?.message}
+                </p>
               </div>
               <div className="cvc-section">
                 <label htmlFor="cvc">CVC</label>
@@ -92,6 +121,7 @@ const App = () => {
                     setOnCardCVC(e.target.value);
                   }}
                 />
+                <p className="err">{errors.cvc?.message}</p>
               </div>
             </div>
             <button className="confirm-button" type="submit">
